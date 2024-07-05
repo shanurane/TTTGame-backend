@@ -188,5 +188,6 @@ io.on("connection", (socket) => {
 });
 
 server.listen(process.env.PORT, () => {
+  console.log("app listening on port", { PORT });
   io.emit("Game Started");
 });
