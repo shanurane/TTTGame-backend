@@ -23,6 +23,7 @@ let waitingPlayer = null;
 const games = {};
 
 io.on("connection", (socket) => {
+  console.log("user connected");
   io.emit("user-connected", socket.id);
   if (waitingPlayer) {
     const gameId = `${waitingPlayer}-${socket.id}`;
@@ -170,6 +171,7 @@ io.on("connection", (socket) => {
   });
 
   socket.on("disconnect", () => {
+    console.log("user disconnected");
     io.emit("user-disconnected");
     if (waitingPlayer === socket.id) {
       waitingPlayer = null;
